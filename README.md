@@ -20,6 +20,7 @@ command = "/path/to/post_bundler.exe"
 - `href` is relative to the location of the `index.html` file it's defined in
 - `data-output` is the resulting file you want the output to appear in. The path is relative to your `dist` folder
 - `data-modules` specifies the root module of your js project. This can be a comma separated list as well such as `app, foo`
+- You are allowed to have multiple ones of these, which would result in multiple js outputs.
 ```html
 <link data-bundler rel="js" href="../static/scripts" data-modules="app" data-output="static/dist.min.js" />
 ```
@@ -54,3 +55,5 @@ command = "/path/to/post_bundler.exe"
 This builder is also capable of building javascript, typescript, jsx, and tsx code.
 
 Simply adding the binary post build will still minify your app html/js, you do not need any setup for that to happen other than adding the hook to your post build.
+
+Also, all js modules/projects are built in parallel across multiple threads for ultimate speed.
