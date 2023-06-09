@@ -1,5 +1,5 @@
 [package]
-name = "post_bundler"
+name = "trunk_bundler"
 version = "0.1.0"
 edition = "2021"
 

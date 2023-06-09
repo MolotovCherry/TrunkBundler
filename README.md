@@ -1,4 +1,4 @@
-# Post bundler
+# Trunk bundler
 
 This is a post-build hook to [Trunk](https://github.com/thedodd/trunk/) whose purpose is to minify the generated html and js output.
 
