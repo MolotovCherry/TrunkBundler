@@ -50,5 +50,7 @@ command = "/path/to/post_bundler.exe"
         app.js
 ```
 
+## Final notes
 This builder is also capable of building javascript, typescript, jsx, and tsx code.
-Simply adding the binary post build will still minify your app html/js, you do not need any setup for that to happen.
+
+Simply adding the binary post build will still minify your app html/js, you do not need any setup for that to happen other than adding the hook to your post build.
