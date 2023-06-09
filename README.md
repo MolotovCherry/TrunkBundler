@@ -26,10 +26,10 @@ command = "/path/to/post_bundler.exe"
 ```
 
 ### Final project setup
-- `package.json`/`node_modules` is optional; it is the file for managing your `node_modules`
-- `lib` is optional. Places named folders inside this; all js files inside the folders will be included in the output js.
+- `package.json`/`node_modules` is optional
+- `lib` is optional. Place named folders inside this; all js files inside the folders will be included in the output js. The file names can be anything, and the folder structure inside does not matter.
 - `src` is where your js files/modules live. If you specify `data-modules="app"`, it will look in `<href path>/src/<module name>.{js,ts,jsx,tsx}` for the module.
-- It will also look in `<href path>/<module name>.{js,ts,jsx,tsx}` for the module if you only need a simpler setup without all the folders.
+- It will also look in `<href path>/<module name>.{js,ts,jsx,tsx}` for the module if you would rather have a simpler setup.
 ```
 │   package.json
 │   app.js
@@ -56,4 +56,4 @@ This builder is also capable of building javascript, typescript, jsx, and tsx co
 
 Simply adding the binary post build will still minify your app html/js, you do not need any setup for that to happen other than adding the hook to your post build.
 
-Also, all js modules/projects are built in parallel across multiple threads for ultimate speed.
+Also, all js modules/projects are built in parallel across multiple threads if you have multiple `<link>` tags
