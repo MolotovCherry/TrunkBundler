@@ -13,7 +13,7 @@ Note: Only tested on Windows so far, but should be able to support Linux. Howeve
 ```toml
 [[hooks]]
 stage = "post_build"
-command = "/path/to/post_bundler.exe"
+command = "/path/to/trunk_bundler.exe"
 ```
 
 ### Add to `index.html`
