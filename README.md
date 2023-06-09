@@ -3,7 +3,7 @@
 This is a post-build hook to [Trunk](https://github.com/thedodd/trunk/) whose purpose is to minify the generated html and js output.
 
 Features:
-- Automatically minifies app js/html in release mode
+- Automatically minifies app js/html in release mode (sass/scss/css support will come eventually)
 - You can also package your own project es modules (it also has node package support!) into one `dist.min.js` file
 
 Note: Only tested on Windows so far, but should be able to support Linux. However, currently I think it will probably fail on Linux. Please submit a bug report as they come, it should be fairly quick to solve. 🙂
