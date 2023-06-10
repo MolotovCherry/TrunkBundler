@@ -1,14 +1,11 @@
 # Trunk bundler
 
-This is a post-build hook to [Trunk](https://github.com/thedodd/trunk/) whose purpose is to minify the generated html and js output.
+This is a post-build hook to [Trunk](https://github.com/thedodd/trunk/) whose purpose is to bundle together an es module js project for distribution
 
 Features:
-- Automatically minifies app js/html in release mode (sass/scss/css support will come eventually)
-- You can also package your own project es modules (it also has node package support!) into one `dist.min.js` file
+- Package your own project es modules (it also has node package support!) into one `dist.min.js` file (sass/scss/css support will come eventually)
 
 Note: Only tested on Windows so far, but should be able to support Linux. However, currently I think it will probably fail on Linux. Please submit a bug report as they come, it should be fairly quick to solve. 🙂
-
-Note 2: It seems that [due to a bug in swc](https://github.com/swc-project/swc/issues/7513), minify had to be disabled on app.js output as it was incorrect. Hopefully we can re-enable it soon
 
 ## To use:
 ### Add to `Trunk.toml`
@@ -19,12 +16,7 @@ command = "/path/to/trunk_bundler.exe"
 ```
 
 ### Add these in `index.html`
-In order to minify the wasm js file
-- Set `data-package` to the package name of your wasm app. This is needed to know which js name to glob for
-
-`<link data-bundler rel="app" data-package="<name here>" />`
-
-If you want to bundle and include a js project, keep reading. You can have a regular js esm project, and can also optionally use node module packages and external libs, and it all gets bundled together into 1 js file. If you want to do that, follow the below instructions:
+Using a js esm project, and optionally node module packages and external libs - it all gets bundled together into 1 js file:
 - You need to specify `data-bundler` to activate it.
 - `href` is relative to the location of the `index.html` file it's defined in
 - `data-output` is the resulting file you want the output to appear in. The path is relative to your `dist` folder
