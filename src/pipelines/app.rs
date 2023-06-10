@@ -54,7 +54,8 @@ pub fn process_app(html_file: &Path, html: &str, asset_manager: &Mutex<AssetMana
                         compress_options.module = true;
                         compress_options.ecma = EsVersion::latest();
 
-                        // TODO!: swc currently breaks the output when minified, so we have no choice but to not minify for now
+                        // ! swc currently breaks the output when minified, so we have no choice but to not minify for now
+                        // TODO: Also, think about using a standalone compiled function instead, then we can avoid the hook
                         // ! https://github.com/swc-project/swc/issues/7513
                         js_config.config.minify = false;
 
