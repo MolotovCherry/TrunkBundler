@@ -20,7 +20,7 @@ command = "/path/to/trunk_bundler.exe"
 
 ### Add these in `index.html`
 In order to minify the wasm js file
-- Set `data-package` to the package name of your wasm app
+- Set `data-package` to the package name of your wasm app. This is needed to know which js name to glob for
 
 `<link data-bundler rel="app" data-package="<name here>" />`
 
