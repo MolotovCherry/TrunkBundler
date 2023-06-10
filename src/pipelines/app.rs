@@ -4,6 +4,7 @@ use std::{
     sync::Mutex,
 };
 
+use nipper::Document;
 use swc_atoms::{js_word, JsWord};
 use swc_bundler::ModuleRecord;
 use swc_common::Span;
@@ -18,15 +19,25 @@ use glob::glob;
 
 use super::html::process_html;
 
-pub fn process_app(html_file: &Path, html: &str, asset_manager: &Mutex<AssetManager>, debug: bool) {
+pub fn process_app(
+    html_file: &Path,
+    document: &mut Document,
+    asset_manager: &Mutex<AssetManager>,
+    debug: bool,
+) {
     // do processing of app files if in release mode
     if !debug {
-        let processed_html = process_html(html);
+        let processed_html = process_html(&document.html());
+
+        let sel = document.select(r#"link[data-bundler][rel="app"]"#);
+        let app = &*sel
+            .attr("data-package")
+            .expect("`data-app` attribute missing");
 
         // now process js
         let glob_dir = env::var("TRUNK_STAGING_DIR").unwrap();
         let glob_dir = Path::new(&glob_dir);
-        let glob_dir = glob_dir.join("app*.js");
+        let glob_dir = glob_dir.join(&format!("{app}-*.js"));
         // workaround for glob, which doesn't like \\?\; also, cause path stripping won't strip \\?\
         let glob_dir = Path::new(
             glob_dir
@@ -69,7 +80,7 @@ pub fn process_app(html_file: &Path, html: &str, asset_manager: &Mutex<AssetMana
                         )
                         .expect("Failed to compile js");
                     } else {
-                        panic!("Ambiguous path `{path:?}`\nPlease do not have ambiguous non-file `app-*.js` paths")
+                        panic!("Ambiguous path `{path:?}`\nPlease do not have ambiguous non-file `{{package}}-*.js` paths")
                     }
                 }
 

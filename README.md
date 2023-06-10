@@ -18,8 +18,13 @@ stage = "post_build"
 command = "/path/to/trunk_bundler.exe"
 ```
 
-### Add to `index.html`
-- (or equivalent) if you want to bundle and include a js project. This project can be a regular es module project, and can also optionally use node module packages and external libs you provide.
+### Add these in `index.html`
+In order to minify the wasm js file
+- Set `data-package` to the package name of your wasm app
+
+`<link data-bundler rel="app" data-package="<name here>" />`
+
+If you want to bundle and include a js project, keep reading. You can have a regular js esm project, and can also optionally use node module packages and external libs, and it all gets bundled together into 1 js file. If you want to do that, follow the below instructions:
 - You need to specify `data-bundler` to activate it.
 - `href` is relative to the location of the `index.html` file it's defined in
 - `data-output` is the resulting file you want the output to appear in. The path is relative to your `dist` folder
@@ -57,7 +62,5 @@ command = "/path/to/trunk_bundler.exe"
 
 ## Final notes
 This builder is also capable of building javascript, typescript, jsx, and tsx code.
-
-Simply adding the binary post build will still minify your app html/js, you do not need any setup for that to happen other than adding the hook to your post build.
 
 Also, all js modules/projects are built in parallel across multiple threads if you have multiple `<link>` tags

@@ -42,7 +42,7 @@ impl PipelineProcessor {
         // this stage needs to be last
         process_app(
             &self.html_file,
-            &self.document.html(),
+            &mut self.document,
             &self.asset_manager,
             self.debug,
         );
