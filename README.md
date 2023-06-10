@@ -8,6 +8,8 @@ Features:
 
 Note: Only tested on Windows so far, but should be able to support Linux. However, currently I think it will probably fail on Linux. Please submit a bug report as they come, it should be fairly quick to solve. 🙂
 
+Note 2: It seems that [due to a bug in swc](https://github.com/swc-project/swc/issues/7513), minify had to be disabled on app.js output as it was incorrect. Hopefully we can re-enable it soon
+
 ## To use:
 ### Add to `Trunk.toml`
 ```toml

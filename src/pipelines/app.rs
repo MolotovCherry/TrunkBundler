@@ -54,9 +54,9 @@ pub fn process_app(html_file: &Path, html: &str, asset_manager: &Mutex<AssetMana
                         compress_options.module = true;
                         compress_options.ecma = EsVersion::latest();
 
-                        // there's a bug where it forgets a comma in the output which causes a syntax error with `instance`, this is to temporarily fix that
-                        js_config.minify.mangle.as_mut().unwrap().reserved =
-                            vec![JsWord::from("instance")];
+                        // TODO!: swc currently breaks the output when minified, so we have no choice but to not minify for now
+                        // ! https://github.com/swc-project/swc/issues/7513
+                        js_config.config.minify = false;
 
                         compile_js(
                             output_dir,
