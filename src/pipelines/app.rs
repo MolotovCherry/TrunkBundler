@@ -37,7 +37,7 @@ pub fn process_app(
         // now process js
         let glob_dir = env::var("TRUNK_STAGING_DIR").unwrap();
         let glob_dir = Path::new(&glob_dir);
-        let glob_dir = glob_dir.join(&format!("{app}-*.js"));
+        let glob_dir = glob_dir.join(&format!("{app}*.js"));
         // workaround for glob, which doesn't like \\?\; also, cause path stripping won't strip \\?\
         let glob_dir = Path::new(
             glob_dir
