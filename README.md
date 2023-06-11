@@ -1,6 +1,6 @@
 # Trunk bundler
 
-This is a post-build hook to [Trunk](https://github.com/thedodd/trunk/) whose purpose is to bundle together an es module js project for distribution
+This is a post-build hook to [Trunk](https://github.com/thedodd/trunk/) whose purpose is to bundle and compile an es module project into 1 distributable js file
 
 Features:
 - Package your own project es modules (it also has node package support!) into one `dist.min.js` file
