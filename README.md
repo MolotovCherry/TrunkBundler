@@ -21,6 +21,9 @@ Using a js esm project, and optionally node module packages and external libs - 
 - `href` is relative to the location of the `index.html` file it's defined in
 - `data-output` is the resulting file you want the output to appear in. The path is relative to your `dist` folder
 - `data-modules` specifies the root module of your js project. This can be a comma separated list as well such as `app, foo`
+- `data-preload` specifies you want to use a `<link rel="preload" href="{url}" as="script" />` tag
+- `data-async` specifies you want to use `async` attribute on the script tag
+- `data-defer` specifies you want to use `defer` attribute on the script tag
 - You are allowed to have multiple ones of these, which would result in multiple js outputs.
 ```html
 <link data-bundler rel="js" href="../static/scripts" data-modules="app" data-output="static/dist.min.js" />

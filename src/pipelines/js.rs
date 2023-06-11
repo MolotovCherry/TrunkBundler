@@ -93,6 +93,26 @@ pub fn process_js(document: &mut Document, asset_manager: &Mutex<AssetManager>, 
         let output = output.strip_prefix('/').unwrap_or(&output);
 
         let public_url = env::var("TRUNK_PUBLIC_URL").unwrap();
-        selection.replace_with_html(format!(r#"<script src="{public_url}{output}"></script>"#));
+        let _async = selection.attr("data-async").map(|_| " async");
+        let defer = selection.attr("data-defer").map(|_| " defer");
+        let preload = selection.attr("data-preload").is_some();
+
+        // async, defer , both require script tag, while preload requires link tag. These are incompatible
+        if (_async.is_some() || defer.is_some()) && preload {
+            panic!("Cannot use `data-preload` with `data-async` or `data-defer`");
+        }
+
+        let _async = _async.unwrap_or("");
+        let defer = defer.unwrap_or("");
+
+        if !preload {
+            selection.replace_with_html(format!(
+                r#"<script src="{public_url}{output}"{_async}{defer}></script>"#
+            ));
+        } else {
+            selection.replace_with_html(format!(
+                r#"<link rel="preload" href="{public_url}{output}" as="script" />"#
+            ));
+        }
     }
 }
