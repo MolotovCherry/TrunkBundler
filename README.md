@@ -3,7 +3,7 @@
 This is a post-build hook to [Trunk](https://github.com/thedodd/trunk/) whose purpose is to bundle together an es module js project for distribution
 
 Features:
-- Package your own project es modules (it also has node package support!) into one `dist.min.js` file (sass/scss/css support will come eventually)
+- Package your own project es modules (it also has node package support!) into one `dist.min.js` file
 
 Note: Only tested on Windows so far, but should be able to support Linux. However, currently I think it will probably fail on Linux. Please submit a bug report as they come, it should be fairly quick to solve. 🙂
 
