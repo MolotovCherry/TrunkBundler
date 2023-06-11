@@ -1,4 +1,3 @@
-mod css;
 mod js;
 
 use std::{fs, path::PathBuf, sync::Mutex};
